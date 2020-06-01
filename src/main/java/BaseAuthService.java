@@ -108,7 +108,7 @@ public class BaseAuthService implements IAuthService {
 
     private void connect(String filename) throws ClassNotFoundException, SQLException {
         Class.forName("org.sqlite.JDBC");
-        String url = "jdbc:mysql://127.0.0.1:3306/?user=root" + filename;
+        String url = "jdbc:sqlite:" + filename;
         this.connection = DriverManager.getConnection(url);
         if (this.connection != null) {
             this.connection.createStatement().execute("CREATE TABLE IF NOT EXISTS users (id    INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE NOT NULL,login VARCHAR(255) UNIQUE,pass  TEXT)");
